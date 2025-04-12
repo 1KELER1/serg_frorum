@@ -1,186 +1,177 @@
-# Discussion forum application
+# Форум для обсуждения ВКР
 
-## Desktop View
-<img src="https://user-images.githubusercontent.com/48129546/185688203-73d67086-9a7c-4380-be23-eed209b687f1.png" width="900"/>
+## Описание проекта
+Веб-приложение "Форум ВКР" разработано для обсуждения выпускных квалификационных работ в Ангарском государственном техническом университете. Данное веб-приложение создано с использованием Django на бэкенде и React на фронтенде и предназначено для организации дискуссий, связанных с различными аспектами ВКР.
 
-## Mobile View
-<p float="left">
-    <img src="https://user-images.githubusercontent.com/48129546/185688445-61e2566d-8fe1-4cba-9460-d937537e0df7.png" width="260" />
-    <img src="https://user-images.githubusercontent.com/48129546/185689253-0e0710fc-3e0b-477f-a3c3-160f3e874359.png" width="260"/>
-    <img src="https://user-images.githubusercontent.com/48129546/185689742-6ca65a9d-b384-4d2d-ad2e-4663acb47ff6.png" width="260"/>
-<p>
+## Функциональные возможности
+### Основные функции
+- Регистрация пользователей
+- Вход/Выход из системы
+- Просмотр всех тем, отсортированных по дате обновления
+- Просмотр тем по категориям ВКР (цели и задачи, план работы и т.д.)
+- Создание новых тем
+- Добавление ответов в темы
+- Сохранение тем в закладки
+- Редактирование профиля пользователя (аватар и биография)
 
+### Особенности
+- Аутентификация на основе токенов
+- Бесконечная прокрутка для загрузки контента
+- Адаптивный дизайн для мобильных устройств
+- Возможность просмотра тем и ответов для гостей (без регистрации)
 
-## Description
-The discussion forum application is built by Django and React. The forum web app allows any user to view threads. Users can register and login to create new thread and reply to any threads to join any discussion.
+## Используемые технологии
+- Python Django
+- React.js
+- HTML5 / CSS
+- Material UI
+- React Bootstrap
+- SQLite3
+- Django REST framework
 
+## Структура проекта
+Проект разделен на фронтенд (React) и бэкенд (Django) части:
 
-## Functions and Features
-### Functions
--   Registration
--   Login / Logout
--   Browse all threads sorted by updating date
--   Browse threads by topic
--   Add new thread
--   Add new post to reply in a thread
--   Bookmark Page
--   User Profile Page (Edit Avatar and biography)
+### Фронтенд (папки `src`, `public`)
+- `./build` - собранная продакшн версия React-приложения
+- `./public` - статические файлы (favicon, index.html)
+- `./src` - исходный код React-приложения
+  - `./components` - компоненты (Header, Footer, AppBar, формы)
+  - `./pages` - страницы приложения (Home.js, Login.js, Signup.js, Thread.js)
+  - `./utils` - вспомогательные функции
+  - `./App.css` - стили приложения
+  - `./index.js` - точка входа React-приложения
+  - `./App.js` - главный компонент приложения
 
-### Features
--   Token Based Authentication
--   Infinite Scrolling 
--   Mobile Responsive
--   Guest / unauthenticated user browse all the threads and posts
+### Бэкенд (папки `myforum`, `api`)
+- `myforum` - настройки и URL-конфигурация Django-приложения
+- `api` - бэкенд-код и представления
+  - `./admin.py` - регистрация моделей в админке
+  - `./apps.py` - конфигурация приложения
+  - `./models.py` - модели базы данных
+  - `./serializers.py` - сериализаторы моделей
+  - `./signals.py` - автоматическое создание профиля для новых пользователей
+  - `./urls.py` - маршрутизация API
+  - `./views.py` - представления и функции API
 
+## Руководство по установке и запуску
 
-## Tech Stack
--   Python Django
--   React.js
--   HTML5 / CSS
--   Material UI
--   React Bootstrap
--   sqlite3
--   Django REST framework
+### Требования
+- Python 3.6 или выше
+- Node.js и npm (для разработки фронтенда)
 
-
-## Contained Files
-In `src`, `public` folder, it stores all the files of frontend built by React.  
--   `./build` a build directory with a production build of the forum app.
--   `./public` contain favicon and index.html etc.
--   `./src` stores all files of React components and pages.
-    -   `./components` contain different components of forum app such as Header, footer, AppBar and various forms.
-    -   `./pages` store defined pages, for example, Home.js, Login.js, signup.js and Thread.js etc.
-    -   `./utils` contain PrivateRoute.js for the implementation of private routes
-    -   `/App.css` styling of the forum app
-    -   `./index.js/` the top structure level of forum app which has App.js component as its child
-    -   `./App.js` the forum app components
-  
-In `myforum` folder, it contains settings and url configuration of the forum app.
-In `api` folder, it consists of a wide range of files of the backend and views.
--   `./admin.py` registration of models
--   `./apps.py`  app config
--   `./models.py` defined database models
--   `./serializers.py` different classes to serialize database models
--   `./signals.py` automatically generate profile for each user creation
--   `./tests.py` empty file
--   `./urls.py` routes of the forum app API to provide endpoints for the client
--   `./views.py` consists of different functions to build the API
-
-
-
-## Getting Started 
-The React app is already integrated to Django app for an easy start.  
-First, clone or download the repository from gitHub.  
-To run the application in local, please following commands.  
+### Шаг 1: Клонирование репозитория
+```bash
+git clone https://github.com/yourusername/Django-React-Discussion-Forum.git
+cd Django-React-Discussion-Forum
 ```
-virtualenv myenv
 
-myenv\Scripts\activate
+### Шаг 2: Настройка виртуального окружения
+```bash
+# Создание виртуального окружения
+python -m venv venv
 
+# Windows
+venv\Scripts\activate
+
+# Linux/Mac
+source venv/bin/activate
+```
+
+### Шаг 3: Установка зависимостей
+```bash
+# Установка Python зависимостей
 pip install -r requirements.txt
+```
 
+### Шаг 4: Применение миграций базы данных
+```bash
+python manage.py migrate
+```
+
+### Шаг 5: Создание суперпользователя (администратора)
+```bash
+python manage.py createsuperuser
+```
+
+### Шаг 6: Запуск сервера разработки
+```bash
 python manage.py runserver
-
-The application will be available on http://127.0.0.1:8000/
 ```
 
-## Additional Information
-I built this forum app in conda virtual environement using Anaconda 3.  
-The npm packages used in frontend is output as file in the following path.
-```
-./react/frontend/npmlist.json
-```
+### Шаг 7: Доступ к приложению
+После запуска сервера приложение будет доступно по адресу: `http://127.0.0.1:8000/`
 
+Панель администрирования доступна по адресу: `http://127.0.0.1:8000/admin/`
 
-## Application API
-The application supports the following API routes:  
+### Разработка фронтенда (опционально)
+Если вы планируете внести изменения в фронтенд-часть:
+```bash
+# Установка npm пакетов
+npm install
 
-Generate token and refresh token
-```
-api/token/ 
-api/token/refresh/
-```  
+# Запуск сервера разработки React
+npm start
 
-Resigter / sign up 
-```
-api/register/ 
-```  
-
-Get user's profile
-```
-api/profile/<int:user_id>
-```  
-
-Retrieve all threads
-```
-api/threads/
-```  
-
-Retrieve a single thread
-```
-api/threads/<int:thread_id>
-```  
-
-Get all the posts/replies of a thread
-```
-api/threads/<int:thread_id>/posts 
-```  
-
-Get the top 5 threads sorted by number of replies
-```
-api/topThreads/
-```  
-
-Get threads by topic
-```
-api/threads/topic/<int:topic_id>
-```  
-
-Create/add a new thread
-```
-api/createThread/
-```  
-
-Create/add a new post (reply a thread)
-```
-api/createPost/ 
-```  
-
-Add bookmark / Remove bookmark
-```
-api/pin/ 
+# Сборка продакшн-версии
+npm run build
 ```
 
-Check user's bookmark of a given thread
+## Структура базы данных
+В приложении используются следующие модели:
+- `User` - модель пользователя (расширяет AbstractUser Django)
+- `Profile` - профиль пользователя с дополнительной информацией
+- `Thread` - тема для обсуждения
+- `Post` - ответ в теме
+- `Pin` - закладка темы пользователем
+
+## API Endpoints
+Приложение поддерживает следующие API маршруты:
+
+### Аутентификация
 ```
-api/pin/<int:thread_id>&&<int:user_id>
+api/token/ - получение токена
+api/token/refresh/ - обновление токена
+api/register/ - регистрация нового пользователя
 ```
 
-Get all bookmarked threads
+### Профиль
 ```
-api/bookmark/<int:user_id> 
+api/profile/<int:user_id> - получение/обновление профиля пользователя
 ```
 
-## Further work
-- deploy to heroku ✔
-- writing unit test 
+### Темы
+```
+api/threads/ - получение всех тем
+api/threads/<int:thread_id> - получение конкретной темы
+api/threads/<int:thread_id>/posts - получение всех ответов в теме
+api/topThreads/ - получение топ-5 тем по количеству ответов
+api/threads/topic/<int:topic_id> - получение тем по категории
+api/createThread/ - создание новой темы
+```
 
-## Requirements
-In this project, you are asked to build a web application of your own. The nature of the application is up to you, subject to a few requirements:
-- Your web application must be sufficiently distinct from the other projects in this course (and, in addition, may not be based on the old CS50W Pizza    project), and more complex than those.
-    - A project that appears to be a social network is a priori deemed by the staff to be indistinct from Project 4, and should not be submitted; it will be rejected.
-    - A project that appears to be an e-commerce site is strongly suspected to be indistinct from Project 2, and your README.md file should be very clear as to why it’s not. Failing that, it should not be submitted; it will be rejected.
+### Ответы и закладки
+```
+api/createPost/ - создание нового ответа
+api/pin/ - добавление/удаление закладки
+api/pin/<int:thread_id>&&<int:user_id> - проверка наличия закладки у пользователя
+api/bookmark/<int:user_id> - получение всех закладок пользователя
+```
 
-- Your web application must utilize Django (including at least one model) on the back-end and JavaScript on the front-end.
-    -   Under its own header within the README called Distinctiveness and Complexity: Why you believe your project satisfies the distinctiveness and complexity requirements, mentioned above.
-    -   What’s contained in each file you created.
-    -   How to run your application.
-    -   Any other additional information the staff should know about your project.
-- Your web application must be mobile-responsive.
-- In a README.md in your project’s main directory, include a writeup describing your project, and specifically your file MUST include all of the following:
-- If you’ve added any Python packages that need to be installed in order to run your web application, be sure to add them to a requirements.txt file!
-- Though there is not a hard requirement here, a README.md in the neighborhood of 500 words is likely a solid target, assuming the other requirements are also satisfied.
+## Категории ВКР
+1. Цели и задачи ВКР
+2. План работы
+3. Теоретические результаты
+4. Практические результаты
+5. Технологии
+6. Литература
+7. Презентация
+8. Общие вопросы
 
-## Demonstration
-Watch the video in YouTube!
-:point_right:https://youtu.be/zzLLeG3HUvA
+## Уровни доступа пользователей
+1. **Посетитель** - может просматривать темы и ответы
+2. **Редактор** - может редактировать материалы разделов
+3. **Администратор** - может управлять пользователями и разделами
+
+## Автор
+Проект разработан в рамках курсового проектирования по дисциплине "Проектирование интернет-приложений" в Ангарском государственном техническом университете.
